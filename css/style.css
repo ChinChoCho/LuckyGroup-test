@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #2d2d2d;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+p {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.header {
+  background-color: #e5e5e5;
+  padding: 30px 20px;
+}
+
+.header__container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__logo {
+  margin-right: 20px;
+}
+
+.header__button {
+  margin-left: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  text-decoration: none;
+}
+
+.logo__icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: transparent;
+  border: 5px solid #f9a779;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+}
+
+.logo__icon span {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 28px;
+  color: #48b774;
+}
+
+.logo__title {
+  display: block;
+  font-family: Poppins;
+  font-size: 25px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.menu {
+  width: 365px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.menu__list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menu__item {
+  position: relative;
+}
+
+.menu__item::after {
+  display: none;
+  position: absolute;
+  left: 50%;
+  content: "";
+  width: 21px;
+  height: 1.5px;
+  background-color: #ff8345;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin: 0 auto;
+}
+
+.menu__item:hover:after {
+  display: block;
+}
+
+.menu__link {
+  white-space: nowrap;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  background-color: #48b774;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+  color: #fff;
+  padding: 9px 23px;
+}
+
+.button:hover {
+  background-color: #6dc590;
+}
+
+.main {
+  background-color: #e5e5e5;
+  padding: 118px 20px 44px 20px;
+}
+
+.main__title {
+  white-space: nowrap;
+  margin-bottom: 18px;
+  line-height: 65px;
+}
+
+.main__text {
+  color: #7c7c7c;
+  margin-right: 54vw;
+  margin-bottom: 30px;
+  line-height: 26px;
+}
+
+.main__button {
+  margin-bottom: 50px;
+}
+
+.main__search {
+  margin-bottom: 40px;
+}
+
+.accent {
+  color: #ff8345;
+}
+
+.search {
+  position: relative;
+  width: 597px;
+}
+
+.search__input {
+  width: 100%;
+  background-color: #fff;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 16px;
+  color: #838383;
+  -webkit-box-shadow: 0px 20px 30px rgba(222, 222, 222, 0.25);
+          box-shadow: 0px 20px 30px rgba(222, 222, 222, 0.25);
+  border: none;
+  -webkit-border-radius: 100px;
+          border-radius: 100px;
+  padding: 22px 61px 22px 40px;
+}
+
+.search__input::-webkit-input-placeholder {
+  color: #a1a1a1;
+}
+
+.search__input:-ms-input-placeholder {
+  color: #a1a1a1;
+}
+
+.search__input::-ms-input-placeholder {
+  color: #a1a1a1;
+}
+
+.search__input::placeholder {
+  color: #a1a1a1;
+}
+
+.search__input:focus {
+  outline: 1px solid #7c7c7c;
+}
+
+.search__button {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  width: 55px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  -webkit-border-radius: 50px;
+          border-radius: 50px;
+}
+
+.search__icon {
+  display: block;
+  width: 25.67px;
+  aspect-ratio: 1 / 1;
+  background: url(../src/icons/search.svg);
+  margin: 0 auto;
+}
+
+.user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+}
+
+.user-icons {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.user-icons__item {
+  display: block;
+  width: 38px;
+  aspect-ratio: 1;
+  -webkit-background-size: cover;
+          background-size: cover;
+  border: 3px solid #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin-left: -16px;
+}
+
+.user-icons__item:nth-child(1) {
+  background-image: url(../src/img/user-1.png);
+  z-index: 3;
+}
+
+.user-icons__item:nth-child(2) {
+  background-image: url(../src/img/user-2.png);
+  z-index: 2;
+}
+
+.user-icons__item:nth-child(3) {
+  background-image: url(../src/img/user-3.png);
+  z-index: 1;
+}
+
+.user-icons__item:first-child {
+  margin: 0;
+}
+
+.user-icons__item:last-child {
+  background-image: url(../src/icons/plus.svg);
+  background-position: 50%;
+  -webkit-background-size: 19px 19px;
+          background-size: 19px;
+  background-color: #ff8345;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.user-info {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  color: #707070;
+}
+
+.user-info span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
