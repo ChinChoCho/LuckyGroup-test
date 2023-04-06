@@ -1,6 +1,7 @@
+@use "sass:math";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap");
 
-$bg-color: #e5e5e5;
+$bg-color: #ecf7f3;
 $white: #fff;
 $green: #48b774;
 $orange: #ff8345;
@@ -9,7 +10,13 @@ $gray: #7c7c7c;
 $text-color: #2d2d2d;
 $font-size: 16px;
 
-* {
+$huge-circle-radius: 225px;
+$large-circle-radius: 140px;
+$delta-circle-radius: 10px;
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -125,6 +132,15 @@ p {
 .main {
     background-color: $bg-color;
     padding: 118px 20px 44px 20px;
+    overflow: hidden;
+    &__container {
+        position: relative;
+    }
+    &__image {
+        position: relative;
+        width: 100%;
+        z-index: 3;
+    }
     &__title {
         white-space: nowrap;
         margin-bottom: 18px;
@@ -141,6 +157,114 @@ p {
     }
     &__search {
         margin-bottom: 40px;
+    }
+}
+.image-wrapper {
+    position: absolute;
+    bottom: -44px;
+    right: -207px;
+    width: 836px;
+    height: 557px;
+    font-size: 0;
+    &::before {
+        position: absolute;
+        content: "";
+        top: 73px;
+        right: 276px;
+        width: 2 * $large-circle-radius;
+        height: 2 * $large-circle-radius;
+        background-color: $green;
+        border-radius: 50%;
+        z-index: 2;
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        top: -44px;
+        right: 196px;
+        width: 2 * $huge-circle-radius;
+        height: 2 * $huge-circle-radius;
+        border: 2px solid #e8e8e8;
+        border-radius: 50%;
+        z-index: 0;
+    }
+}
+.circles {
+    position: absolute;
+    top: 213px - 32px;
+    left: 420px - 5px;
+    animation: rotate-left 40s linear 5s infinite;
+    z-index: 1;
+    &__item {
+        position: absolute;
+        // z-index: 12;
+        // animation: translate-circle-1 0.4s linear 0.4s forwards;
+        // transform: translate(-50%, -50%);
+        &::after {
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../src/img/flag-1.png);
+            background-size: cover;
+            background-position: 50%;
+            border-radius: 50%;
+            border: $delta-circle-radius solid $white;
+            animation: rotate-right 40s linear 5s infinite;
+        }
+        &:nth-child(1),
+        &:nth-child(3) {
+            width: 8 * $delta-circle-radius;
+            height: 8 * $delta-circle-radius;
+            &::after {
+                background-image: url(../src/img/flag-1.png);
+            }
+        }
+        &:nth-child(2),
+        &:nth-child(6) {
+            width: 5 * $delta-circle-radius;
+            height: 5 * $delta-circle-radius;
+            &::after {
+                background-image: url(../src/img/flag-3.png);
+            }
+        }
+        &:nth-child(4) {
+            width: 6 * $delta-circle-radius;
+            height: 6 * $delta-circle-radius;
+            &::after {
+                background-image: url(../src/img/flag-2.png);
+            }
+        }
+        &:nth-child(5) {
+            width: 7 * $delta-circle-radius;
+            height: 7 * $delta-circle-radius;
+            &::after {
+                background-image: url(../src/img/flag-3.png);
+            }
+        }
+        @for $i from 1 to 7 {
+            &:nth-child(#{$i}) {
+                top: -50%;
+                left: -50%;
+                // transform: translate(
+                //     math.cos(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius,
+                //     -1 * math.sin(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius
+                // );
+                // transition-property: transform;
+                // transition-duration: 0.4s;
+                // transition-delay: 3s + $i * 0.4s;
+                // top: -1 * math.sin(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius;
+                // left: math.cos(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius;
+                // left: calc(-#{$huge-circle-radius} - 5px + #{$i} * 80px);
+                // bottom: math.sin(330deg) + px;
+                // width: 8 * $delta-circle-radius;
+                // height: 8 * $delta-circle-radius;
+                animation: circle-#{$i} 0.4s linear 2.2s + $i * 0.4s forwards, rotate-left;
+                // background-image: url(../src/img/flag-1.png);
+                // animation-name: sfeh, rotate;
+                // animation: translate 4s linear 1s infinite;
+            }
+        }
     }
 }
 .accent {
@@ -163,6 +287,7 @@ p {
         &::placeholder {
             color: #a1a1a1;
         }
+        &:hover,
         &:focus {
             outline: 1px solid $gray;
         }
@@ -195,8 +320,9 @@ p {
     &__item {
         display: block;
         width: 38px;
-        aspect-ratio: 1;
+        height: 38px;
         background-size: cover;
+        background-position: 50%;
         border: 3px solid $white;
         border-radius: 50%;
         margin-left: -16px;
@@ -212,7 +338,6 @@ p {
         }
         &:last-child {
             background-image: url(../src/icons/plus.svg);
-            background-position: 50%;
             background-size: 19px;
             background-color: $orange;
             background-repeat: no-repeat;
@@ -227,6 +352,48 @@ p {
     color: #707070;
     span:hover {
         cursor: pointer;
-        text-decoration: underline;  
+        text-decoration: underline;
     }
 }
+@keyframes rotate-right {
+    to {
+        transform: rotateZ(-1turn);
+    }
+}
+@keyframes rotate-left {
+    to {
+        transform: rotateZ(1turn);
+    }
+}
+@for $i from 1 to 7 {
+    $offset: 4 * $delta-circle-radius;
+    @if $i == 2 or $i == 6 {
+        $offset: 2.5 * $delta-circle-radius;
+    } @else if $i == 4 {
+        $offset: 3 * $delta-circle-radius;
+    } @else if $i == 5 {
+        $offset: 3.5 * $delta-circle-radius;
+    }
+    @keyframes circle-#{$i} {
+        from {
+            transform: translate(-50%, -50%);
+        }
+        to {
+            transform: translate(
+                math.cos(330deg - $i * 60deg) * $huge-circle-radius - $offset,
+                -1 * math.sin(330deg - $i * 60deg) * $huge-circle-radius - $offset
+            );
+        }
+    }
+}
+// .circle-1 {
+//     width: 100px;
+//     height: 100px;
+//     background-color: #fecfec;
+//     animation: translate-circle-1 2s linear 1s forwards;
+// }
+// @keyframes translate-circle-1 {
+//     to {
+//         transform: translate(50px, 50px);
+//     }
+// }
