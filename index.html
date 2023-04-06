@@ -43,7 +43,7 @@
                 <p class="main__text">We Make international calling simple, relible, and cheap basedon your unique calling behavior.</p>
                 <button class="button main__button">Get Started</button>
                 <form class="search main__search" action="">
-                    <input class="search__input" type="text" placeholder="Where do you want to call?" name="search" />
+                    <input class="search__input" type="text" minlength="4" maxlength="12" placeholder="Where do you want to call?" name="search" pattern="^[^!@#$%^&*()]+$"/>
                     <button class="button search__button" type="submit">
                         <i class="search__icon"></i>
                     </button>
