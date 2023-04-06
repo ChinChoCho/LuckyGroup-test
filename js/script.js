@@ -1,28 +1,10 @@
 "use strict";
 
-function get(myUrl) {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", myUrl);
-        xhr.responseType = "json";
-        xhr.onload = () => {
-            if (xhr.status >= 400) {
-                reject(xhr.response);
-            } else {
-                resolve(xhr.response);
-            }
-        };
-        xhr.send();
-    });
-}
+const menuIcon = document.querySelector(".menu__icon");
+const menu = document.querySelector(".menu");
+console.log(menu, menuIcon);
 
-function addText(data) {
-    const element = document.getElementsByClassName("main__text");
-    element[0].innerHTML = data[0].substr(0, 100) + "...";
-}
-
-const timerId = setInterval(function () {
-    const obj = get("https://baconipsum.com/api/?type=lucky")
-        .then((data) => addText(data))
-        .catch((err) => console.log(err));
-}, 2000);
+menuIcon.addEventListener("click", function () {
+    menu.classList.toggle("_active");
+    menuIcon.classList.toggle("_active");
+});

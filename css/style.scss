@@ -29,6 +29,9 @@ h1 {
     font-family: Poppins;
     font-weight: 700;
     font-size: 48px;
+    @media (max-width: 1050px) {
+        font-size: 32px;
+    }
 }
 p {
     font-family: Poppins;
@@ -40,6 +43,7 @@ p {
     padding: 30px 20px;
     &__container {
         display: flex;
+        position: relative;
         justify-content: space-between;
         align-items: center;
     }
@@ -88,10 +92,62 @@ p {
     font-family: Poppins;
     font-size: $font-size;
     font-weight: 400;
+    &__icon {
+        z-index: 5;
+        display: none;
+        -webkit-tap-highlight-color: transparent;
+        @media (max-width: 600px) {
+            display: block;
+            position: relative;
+            width: 30px;
+            height: 28px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-left: 5px;
+            span {
+                transition: 0.2s ease 0s;
+                top: calc(50% - 1px);
+                left: 0;
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: $text-color;
+                &:first-child {
+                    top: 5px;
+                }
+                &:last-child {
+                    top: auto;
+                    bottom: 5px;
+                }
+            }
+            &._active {
+                span {
+                    transform: scale(0);
+                    &:first-child {
+                        transform: translateX(5px) rotate(-45deg);
+                        top: calc(50% - 1px);
+                        width: 20px;
+                    }
+                    &:last-child {
+                        transform: translateX(5px) rotate(45deg);
+                        bottom: calc(50% - 1px);
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
     &__list {
         display: flex;
         list-style: none;
         justify-content: space-between;
+        @media (max-width: 1050px) {
+            justify-content: space-around;
+        }
+        @media (max-width: 600px) {
+            flex-direction: column;
+            align-items: center;
+        }
     }
     &__item {
         position: relative;
@@ -109,9 +165,31 @@ p {
         &:hover:after {
             display: block;
         }
+        @media (max-width: 600px) {
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            & + & {
+                border-top: 1px solid $text-color;
+            }
+        }
     }
     &__link {
         white-space: nowrap;
+    }
+    &._active {
+        display: block;
+    }
+    @media (max-width: 600px) {
+        display: none;
+        position: absolute;
+        width: max-content;
+        top: 50px;
+        left: calc(50% + 8px);
+        transform: translateX(-50%);
+        z-index: 4;
+        border: 1px solid $text-color;
+        background-color: $bg-color;
     }
 }
 .button {
@@ -145,18 +223,43 @@ p {
         white-space: nowrap;
         margin-bottom: 18px;
         line-height: 65px;
+        @media (max-width: 1050px) {
+            line-height: 40px;
+        }
+        @media (max-width: 768px) {
+            text-align: center;
+        }
     }
     &__text {
         color: $gray;
         margin-right: 54vw;
         margin-bottom: 30px;
         line-height: 26px;
+        @media (max-width: 768px) {
+            margin-right: 15vw;
+            margin-left: 15vw;
+            min-height: 80px;
+            text-align: center;
+        }
     }
     &__button {
         margin-bottom: 50px;
+        @media (max-width: 768px) {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     &__search {
         margin-bottom: 40px;
+        @media (max-width: 768px) {
+            // display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    @media (max-width: 1050px) {
+        padding: 30px 20px 30px 20px;
     }
 }
 .image-wrapper {
@@ -188,6 +291,13 @@ p {
         border-radius: 50%;
         z-index: 0;
     }
+    @media (max-width: 1050px) {
+        transform: scale(0.8);
+        bottom: -86px;
+    }
+    @media (max-width: 768px) {
+        display: none;
+    }
 }
 .circles {
     position: absolute;
@@ -197,9 +307,6 @@ p {
     z-index: 1;
     &__item {
         position: absolute;
-        // z-index: 12;
-        // animation: translate-circle-1 0.4s linear 0.4s forwards;
-        // transform: translate(-50%, -50%);
         &::after {
             display: block;
             content: "";
@@ -246,23 +353,7 @@ p {
             &:nth-child(#{$i}) {
                 top: -50%;
                 left: -50%;
-                // transform: translate(
-                //     math.cos(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius,
-                //     -1 * math.sin(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius
-                // );
-                // transition-property: transform;
-                // transition-duration: 0.4s;
-                // transition-delay: 3s + $i * 0.4s;
-                // top: -1 * math.sin(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius;
-                // left: math.cos(330deg - $i * 60deg) * $huge-circle-radius - 4 * $delta-circle-radius;
-                // left: calc(-#{$huge-circle-radius} - 5px + #{$i} * 80px);
-                // bottom: math.sin(330deg) + px;
-                // width: 8 * $delta-circle-radius;
-                // height: 8 * $delta-circle-radius;
                 animation: circle-#{$i} 0.4s linear 2.2s + $i * 0.4s forwards, rotate-left;
-                // background-image: url(../src/img/flag-1.png);
-                // animation-name: sfeh, rotate;
-                // animation: translate 4s linear 1s infinite;
             }
         }
     }
@@ -308,11 +399,19 @@ p {
         background: url(../src/icons/search.svg);
         margin: 0 auto;
     }
+    @media (max-width: 1050px) {
+        width: 310px;
+    }
 }
 .user {
     display: flex;
     align-items: center;
     gap: 12px;
+    @media (max-width: 768px) {
+        justify-content: center;
+        // margin-left: auto;
+        // margin-right: auto;
+    }
 }
 .user-icons {
     display: inline-flex;
@@ -386,14 +485,3 @@ p {
         }
     }
 }
-// .circle-1 {
-//     width: 100px;
-//     height: 100px;
-//     background-color: #fecfec;
-//     animation: translate-circle-1 2s linear 1s forwards;
-// }
-// @keyframes translate-circle-1 {
-//     to {
-//         transform: translate(50px, 50px);
-//     }
-// }
