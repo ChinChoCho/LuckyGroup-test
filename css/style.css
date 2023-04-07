@@ -287,12 +287,22 @@ p {
   margin-bottom: 30px;
   line-height: 26px;
 }
+@media (max-width: 1050px) {
+  .main__text {
+    min-height: 80px;
+  }
+}
 @media (max-width: 768px) {
   .main__text {
     margin-right: 15vw;
     margin-left: 15vw;
-    min-height: 80px;
     text-align: center;
+  }
+}
+@media (max-width: 500px) {
+  .main__text {
+    min-height: 105px;
+    margin-bottom: 20px;
   }
 }
 .main__button {
